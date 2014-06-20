@@ -16,7 +16,7 @@ describe("express-sequelize-params", function(){
 			port : 3306,
 			logging : false
 		});
-		self.models.MyModel = sequelize.define("MyModel", {name : Sequelize.STRING});
+		self.models.MyModel = sequelize.define("MyModels", {name : Sequelize.STRING});
 		self.models.MyModel.sync({force : true})
 		.success(function(){
 			self.models.MyModel.create({name : "Test"})
