@@ -1,0 +1,23 @@
+{
+  "name": "connect-sequelize-params",
+  "version": "0.0.0",
+  "description": "Connect middleware for populating params with sequelize objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:admittedly/connect-sequelize-params.git"
+  },
+  "keywords": [
+    "connect",
+    "express",
+    "sequelize"
+  ],
+  "author": "Seth Samuel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/admittedly/connect-sequelize-params/issues"
+  }
+}
