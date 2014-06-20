@@ -2,10 +2,18 @@ module.exports = function(Model, options){
 	var options = options || {};
 
 	if(typeof options.parameterName == "undefined"){
-		var r = /([A-Z][a-z]+)/g;
-		var modelParts = [];
-		while(m = r.exec(Model.name)){modelParts.push(m[0]);};
-		options.parameterName = modelParts.map(function(c){return c.toLowerCase();}).join("_");
+		var modelName = Model.name;
+		if(modelName.indexOf("_") > -1){
+			//Table is underscored
+			options.parameterName = modelName;
+		}else{
+			//Table is camel case or caplitalized
+			modelName = modelName.slice(0,1).toUpperCase() + modelName.slice(1);
+			var r = /([A-Z][a-z]+)/g;
+			var modelParts = [];
+			while(m = r.exec(modelName)){modelParts.push(m[0]);};
+			options.parameterName = modelParts.map(function(c){return c.toLowerCase();}).join("_");
+		}
 	}
 
 	return function(req, res, next, id){

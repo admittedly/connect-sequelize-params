@@ -29,7 +29,7 @@ describe("express-sequelize-params", function(){
 		.error(done);
 	});
 
-	describe("default options", function(){
+	describe("Default options", function(){
 		beforeEach(function(){
 			var self = this;
 
