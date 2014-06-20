@@ -14,16 +14,17 @@ describe("express-sequelize-params", function(){
 		var sequelize = new Sequelize("express_sequelize_params_test", "root", "", {
 			dialect : "mysql",
 			port : 3306,
-			sync : {force : true},
 			logging : false
 		});
 		self.models.MyModel = sequelize.define("MyModel", {name : Sequelize.STRING});
-		self.models.MyModel.sync();
-
-		self.models.MyModel.create({name : "Test"})
+		self.models.MyModel.sync({force : true})
 		.success(function(){
-			self.app = express();
-			done();
+			self.models.MyModel.create({name : "Test"})
+			.success(function(){
+				self.app = express();
+				done();
+			})
+			.error(done);
 		})
 		.error(done);
 	});
@@ -40,6 +41,7 @@ describe("express-sequelize-params", function(){
 
 			self.app.get("/my_models/:my_model", function(req, res, next){
 				req.params.my_model.must.exist();
+				req.params.my_model.id.must.be(1);
 				req.params.my_model.name.must.be("Test");
 				done();
 			});
@@ -57,5 +59,72 @@ describe("express-sequelize-params", function(){
 			.expect(404)
 			.end(done);
 		});
-	})
+	});
+
+	describe("Parameter name options", function(){
+		beforeEach(function(){
+			var self = this;
+
+			self.app.param(":myModel", middleware(self.models.MyModel, {parameterName : "myModel"}));
+		});
+
+		it("must find and replace a parameter with a custom name with its object", function(done){
+			var self = this;
+
+			self.app.get("/my_models/:myModel", function(req, res, next){
+				req.params.myModel.must.exist();
+				req.params.myModel.id.must.be(1);
+				req.params.myModel.name.must.be("Test");
+				done();
+			});
+
+			request(self.app)
+			.get("/my_models/1")
+			.end();
+		});
+	});
+
+	describe("Not found options", function(){
+		describe("when notFound is set to 'next'", function(){
+			beforeEach(function(){
+				var self = this;
+				self.app.param(":my_model", middleware(self.models.MyModel, {notFound : "next"}));
+			});
+
+			it("must pass to next if param is not found", function(done){
+				var self = this;
+
+				self.app.get("/my_models/:my_model", function(req, res, next){
+					req.params.my_model.must.exist();
+					demand(req.params.my_model.name).not.exist();
+					done();
+				});
+
+				request(self.app)
+				.get("/my_models/2")
+				.end();
+			});
+
+			describe("when deleteOnNotFound is set to true", function(){
+				beforeEach(function(){
+					var self = this;
+					self.app.param(":my_model", middleware(self.models.MyModel, {notFound : "next", deleteParamOnNotFound : true}));
+				});
+
+				it("must clear the param if model instance is not found", function(done){
+					var self = this;
+
+					self.app.get("/my_models/:my_model", function(req, res, next){
+						demand(req.params.my_model).not.exist();
+						done();
+					});
+
+					request(self.app)
+					.get("/my_models/2")
+					.end();
+				});
+
+			});
+		});
+	});
 });
