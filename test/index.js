@@ -23,33 +23,39 @@ describe("express-sequelize-params", function(){
 		self.models.MyModel.create({name : "Test"})
 		.success(function(){
 			self.app = express();
-			self.app.param(":my_model", middleware(self.models.MyModel));
-
 			done();
 		})
 		.error(done);
 	});
 
-	it("must find and replace a parameter with its object", function(done){
-		var self = this;
+	describe("default options", function(){
+		beforeEach(function(){
+			var self = this;
 
-		self.app.get("/my_models/:my_model", function(req, res, next){
-			req.params.my_model.must.exist();
-			req.params.my_model.name.must.be("Test");
-			done();
+			self.app.param(":my_model", middleware(self.models.MyModel));
 		});
 
-		request(self.app)
-		.get("/my_models/1")
-		.end();
-	});
+		it("must find and replace a parameter with its object", function(done){
+			var self = this;
 
-	it("must send a 404 when the object is not found", function(done){
-		var self = this;
+			self.app.get("/my_models/:my_model", function(req, res, next){
+				req.params.my_model.must.exist();
+				req.params.my_model.name.must.be("Test");
+				done();
+			});
 
-		request(self.app)
-		.get("/my_models/2")
-		.expect(404)
-		.end(done);
-	});
+			request(self.app)
+			.get("/my_models/1")
+			.end();
+		});
+
+		it("must send a 404 when the object is not found", function(done){
+			var self = this;
+
+			request(self.app)
+			.get("/my_models/2")
+			.expect(404)
+			.end(done);
+		});
+	})
 });
