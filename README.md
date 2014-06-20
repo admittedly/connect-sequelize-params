@@ -13,10 +13,16 @@ npm install express-sequelize-params
 
 Basic usage
 ---
+This middleware will replace a given param with the corresponding instance of the given model.
 ```
 var app = express();
+var MyModel = sequelize.define("MyModel");
 var esp = require("express-sequelize-params");
-app.param(":my_model", esp(self.models.MyModel));
+app.param(":my_model", esp(MyModel));
+```
+You can specify the parameter to replace with an option
+```
+app.param(":myModel", esp(MyModel, {parameterName: "myModel"}));
 ```
 
 Running tests
