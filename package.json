@@ -1,23 +1,37 @@
 {
-  "name": "connect-sequelize-params",
+  "name": "express-sequelize-params",
   "version": "0.0.0",
-  "description": "Connect middleware for populating params with sequelize objects.",
+  "description": "Express middleware for populating params with sequelize objects.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec -t 10000"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:admittedly/connect-sequelize-params.git"
+    "url": "git@github.com:admittedly/express-sequelize-params.git"
   },
   "keywords": [
-    "connect",
     "express",
     "sequelize"
   ],
-  "author": "Seth Samuel",
+  "author": {
+    "name": "Seth Samuel",
+    "email": "seth@admitted.ly",
+    "url": "https://admitted.ly"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/admittedly/connect-sequelize-params/issues"
+    "url": "https://github.com/admittedly/express-sequelize-params/issues"
+  },
+  "devDependencies": {
+    "express": "*",
+    "must": "~0.12.0",
+    "supertest": "~0.13.0",
+    "mocha": "~1.20.1",
+    "mysql": "~2.3.2"
+  },
+  "peerDependencies": {
+    "express": "*",
+    "sequelize": "*"
   }
 }

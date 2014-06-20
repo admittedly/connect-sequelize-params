@@ -1,0 +1,12 @@
+before_script:
+  - "echo echo 'CREATE DATABASE express_sequelize_params_test;' | mysql -uroot"
+  - "npm install -g mocha"
+  - "npm install"
+
+cache:
+  - npm
+
+language: node_js
+
+node_js: 
+  - "0.10"
