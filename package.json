@@ -1,6 +1,6 @@
 {
   "name": "express-sequelize-params",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Express middleware for populating params with sequelize objects.",
   "main": "index.js",
   "scripts": {
