@@ -33,7 +33,7 @@ describe("express-sequelize-params", function(){
 		beforeEach(function(){
 			var self = this;
 
-			self.app.param(":my_model", middleware(self.models.MyModel));
+			self.app.param("my_model", middleware(self.models.MyModel));
 		});
 
 		it("must find and replace a parameter with its object", function(done){
@@ -65,7 +65,7 @@ describe("express-sequelize-params", function(){
 		beforeEach(function(){
 			var self = this;
 
-			self.app.param(":myModel", middleware(self.models.MyModel, {parameterName : "myModel"}));
+			self.app.param("myModel", middleware(self.models.MyModel, {parameterName : "myModel"}));
 		});
 
 		it("must find and replace a parameter with a custom name with its object", function(done){
@@ -88,7 +88,7 @@ describe("express-sequelize-params", function(){
 		describe("when notFound is set to 'next'", function(){
 			beforeEach(function(){
 				var self = this;
-				self.app.param(":my_model", middleware(self.models.MyModel, {notFound : "next"}));
+				self.app.param("my_model", middleware(self.models.MyModel, {notFound : "next"}));
 			});
 
 			it("must pass to next if param is not found", function(done){
@@ -108,7 +108,7 @@ describe("express-sequelize-params", function(){
 			describe("when deleteOnNotFound is set to true", function(){
 				beforeEach(function(){
 					var self = this;
-					self.app.param(":my_model", middleware(self.models.MyModel, {notFound : "next", deleteParamOnNotFound : true}));
+					self.app.param("my_model", middleware(self.models.MyModel, {notFound : "next", deleteParamOnNotFound : true}));
 				});
 
 				it("must clear the param if model instance is not found", function(done){

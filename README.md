@@ -18,11 +18,11 @@ This middleware will replace a given param with the corresponding instance of th
 var app = express();
 var MyModel = sequelize.define("MyModel");
 var esp = require("express-sequelize-params");
-app.param(":my_model", esp(MyModel));
+app.param("my_model", esp(MyModel));
 ```
 You can specify the parameter to replace with an option
 ```
-app.param(":myModel", esp(MyModel, {parameterName: "myModel"}));
+app.param("myModel", esp(MyModel, {parameterName: "myModel"}));
 ```
 
 Running tests
