@@ -5,6 +5,9 @@ express-sequelize-params
 
 Express middleware for populating params with sequelize objects.
 
+This module is extemely alpha/not ready for production.
+===
+
 Installation
 ---
 ```
