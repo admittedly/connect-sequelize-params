@@ -1,12 +1,16 @@
 before_script:
-  - "echo 'CREATE DATABASE express_sequelize_params_test;' | mysql -uroot"
-  - "npm install -g mocha"
-  - "npm install"
+	- "echo 'CREATE DATABASE express_sequelize_params_test;' | mysql -uroot"
+	- "npm install -g mocha"
+	- "npm install"
 
 cache:
-  - npm
+	- npm
+
+env:
+	- SEQUELIZE_VERSION="1.7.9"
+	- SEQUELIZE_VERSION="unstable"
 
 language: node_js
 
 node_js: 
-  - "0.10"
+	- "0.10"
