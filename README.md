@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/admittedly/express-sequelize-params.svg?branch=master)](https://travis-ci.org/admittedly/express-sequelize-params)
+[![Coverage Status](https://coveralls.io/repos/admittedly/express-sequelize-params/badge.png?branch=master)](https://coveralls.io/r/admittedly/express-sequelize-params?branch=master)
 
 express-sequelize-params
 ========================
