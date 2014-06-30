@@ -54,6 +54,11 @@ describe("express-sequelize-params", function(){
 		it("must send a 404 when the object is not found", function(done){
 			var self = this;
 
+			self.app.get("/my_models/:my_model", function(req, res, next){
+				//This should never get called
+				demand(true).be(false);
+			});
+
 			request(self.app)
 			.get("/my_models/2")
 			.expect(404)

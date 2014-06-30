@@ -9,7 +9,7 @@ module.exports = function(Model, options){
 		Model.find(id)
 		.success(function(model){
 			if(!model){
-				if(options.notFound == "next"){
+				if(options.notFound === "next"){
 					if(options.deleteParamOnNotFound === true) delete req.params[options.parameterName];
 					return next();
 				}
