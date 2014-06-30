@@ -1,43 +1,43 @@
 {
-  "name": "express-sequelize-params",
-  "version": "0.0.8",
-  "description": "Express middleware for populating params with sequelize objects.",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm install sequelize@$SEQUELIZE_VERSION && mocha --reporter spec -t 10000"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:admittedly/express-sequelize-params.git"
-  },
-  "keywords": [
-    "express",
-    "sequelize"
-  ],
-  "author": {
-    "name": "Seth Samuel",
-    "email": "seth@admitted.ly",
-    "url": "https://admitted.ly"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/admittedly/express-sequelize-params/issues"
-  },
-  "devDependencies": {
-    "express": "*",
-    "sequelize": "*",
-    "must": "~0.12.0",
-    "supertest": "~0.13.0",
-    "mocha": "~1.20.1",
-    "mysql": "~2.3.2",
-    "coveralls": "~2.10.1",
-    "mocha-lcov-reporter": "0.0.1"
-  },
-  "peerDependencies": {
-    "express": "*",
-    "sequelize": "*"
-  },
-  "dependencies": {
-    "pluralize": "0.0.10"
-  }
+	"name": "express-sequelize-params",
+	"version": "0.0.8",
+	"description": "Express middleware for populating params with sequelize objects.",
+	"main": "index.js",
+	"scripts": {
+		"test": "npm install sequelize@$SEQUELIZE_VERSION && ./node_modules/.bin/mocha --reporter spec -t 10000"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:admittedly/express-sequelize-params.git"
+	},
+	"keywords": [
+		"express",
+		"sequelize"
+	],
+	"author": {
+		"name": "Seth Samuel",
+		"email": "seth@admitted.ly",
+		"url": "https://admitted.ly"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/admittedly/express-sequelize-params/issues"
+	},
+	"devDependencies": {
+		"express": "*",
+		"sequelize": "*",
+		"must": "~0.12.0",
+		"supertest": "~0.13.0",
+		"mocha": "~1.20.1",
+		"mysql": "~2.3.2",
+		"coveralls": "~2.10.1",
+		"mocha-lcov-reporter": "0.0.1"
+	},
+	"peerDependencies": {
+		"express": "*",
+		"sequelize": "*"
+	},
+	"dependencies": {
+		"pluralize": "0.0.10"
+	}
 }
