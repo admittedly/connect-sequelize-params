@@ -11,10 +11,12 @@ cache:
   - npm
 
 env:
-  - SEQUELIZE_VERSION="1.7.9"
-  - SEQUELIZE_VERSION="unstable"
-  - EXPRESS_VERSION="~3"
-  - EXPRESS_VERSION="~4"
+  SEQUELIZE_VERSION:
+    -"1.7.9"
+    -"unstable"
+  EXPRESS_VERSION:
+    - "~3"
+    - "~4"
 
 language: node_js
 
