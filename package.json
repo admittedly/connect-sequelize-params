@@ -4,7 +4,7 @@
   "description": "Express middleware for populating params with sequelize objects.",
   "main": "index.js",
   "scripts": {
-    "test": "npm install sequelize@$SEQUELIZE_VERSION && ./node_modules/.bin/mocha --reporter spec -t 10000"
+    "test": "./node_modules/.bin/mocha --reporter spec -t 10000"
   },
   "repository": {
     "type": "git",

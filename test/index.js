@@ -67,14 +67,27 @@ describe("express-sequelize-params", function(){
 	});
 
 	describe("Parameter name options", function(){
-		beforeEach(function(){
+		it("must find and replace a parameter with a custom name with its object", function(done){
 			var self = this;
 
 			self.app.param("myModel", middleware(self.models.MyModel, {parameterName : "myModel"}));
+
+			self.app.get("/my_models/:myModel", function(req, res, next){
+				req.params.myModel.must.exist();
+				req.params.myModel.id.must.be(1);
+				req.params.myModel.name.must.be("Test");
+				done();
+			});
+
+			request(self.app)
+			.get("/my_models/1")
+			.end();
 		});
 
-		it("must find and replace a parameter with a custom name with its object", function(done){
+		it("must find and replace a parameter with a parameter format with its object", function(done){
 			var self = this;
+
+			self.app.param("myModel", middleware(self.models.MyModel, {parameterFormat : "camelcase"}));
 
 			self.app.get("/my_models/:myModel", function(req, res, next){
 				req.params.myModel.must.exist();

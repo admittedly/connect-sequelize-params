@@ -26,8 +26,14 @@ app.param("my_model", esp(MyModel));
 ```
 You can specify the parameter to replace with an option
 ```
-app.param("myModel", esp(MyModel, {parameterName: "myModel"}));
+app.param("MyModelOption", esp(MyModel, {parameterName: "MyModelOption"}));
 ```
+
+Or specify the parameter name format
+```
+app.param("myModel", esp(MyModel, {parameterFormat: "camelcase"}));
+```
+
 
 Running tests
 ---
