@@ -8,15 +8,14 @@ after_script:
   - "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec --recursive test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
 
 cache:
-  - npm
+  directories:
+    - node_modules
 
 env:
-  SEQUELIZE_VERSION:
-    -"1.7.9"
-    -"unstable"
-  EXPRESS_VERSION:
-    - "~3"
-    - "~4"
+  - SEQUELIZE_VERSION="1.7.9" EXPRESS_VERSION="~3"
+  - SEQUELIZE_VERSION="unstable" EXPRESS_VERSION="~3"
+  - SEQUELIZE_VERSION="1.7.9" EXPRESS_VERSION="~4"
+  - SEQUELIZE_VERSION="unstable" EXPRESS_VERSION="~4"
 
 language: node_js
 
