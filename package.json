@@ -39,6 +39,6 @@
     "sequelize": "*"
   },
   "dependencies": {
-    "pluralize": "0.0.10"
+    "inflection": "~1.5.2"
   }
 }
