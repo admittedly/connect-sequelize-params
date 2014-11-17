@@ -19,7 +19,7 @@ module.exports = function(Model, options){
 					if(options.deleteParamOnNotFound === true) delete req.params[options.parameterName];
 					return next();
 				}
-				return res.send(404);
+				return (!!res.sendStatus) ? res.sendStatus(404) : res.send(404);
 			}
 			req.params[options.parameterName] = model;
 			next();
